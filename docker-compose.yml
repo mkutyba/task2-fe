@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  node:
+    image: node:6
+    ports:
+      - 4200:4200
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: npm start
