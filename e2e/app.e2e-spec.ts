@@ -7,8 +7,8 @@ describe('task2-fe App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display menu element', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getMenuElement()).not.toBe(null);
   });
 });
