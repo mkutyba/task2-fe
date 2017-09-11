@@ -11,11 +11,17 @@ const routes: Routes = [
   },
   {
     path: 'suppliers',
-    component: SuppliersComponent
+    component: SuppliersComponent,
+    data: {
+      title: 'Suppliers',
+    }
   },
   {
     path: 'items',
-    component: ItemsComponent
+    component: ItemsComponent,
+    data: {
+      title: 'Items',
+    }
   },
 ];
 

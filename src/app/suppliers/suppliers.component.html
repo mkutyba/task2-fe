@@ -1,3 +1,12 @@
-<p>
-  suppliers works!
-</p>
+<md-list class="mat-elevation-z3" *ngIf="suppliers.length">
+  <md-list-item *ngFor="let supplier of suppliers">
+    <h4 md-line>{{supplier.name}}</h4>
+    <p md-line>{{supplier.number}} | {{supplier.logo}}</p>
+  </md-list-item>
+  <md-list-item *ngIf="suppliers.length === 0 && !error">
+    <h4 md-line>No items to display</h4>
+  </md-list-item>
+  <md-list-item *ngIf="error">
+    <h4 md-line>Failed to load data</h4>
+  </md-list-item>
+</md-list>

@@ -1,8 +1,15 @@
-<button md-icon-button [mdMenuTriggerFor]="mainMenu">
-  <md-icon class="mat-icon material-icons md-36">menu</md-icon>
-</button>
+<md-toolbar>
+  <button md-icon-button [mdMenuTriggerFor]="mainMenu">
+    <md-icon class="md-36">menu</md-icon>
+  </button>
+  <h1>{{title}}</h1>
+</md-toolbar>
+
 <md-menu #mainMenu="mdMenu">
   <a md-menu-item routerLink="/suppliers">Suppliers</a>
   <a md-menu-item routerLink="/items">Items</a>
 </md-menu>
-<router-outlet></router-outlet>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

@@ -22,6 +22,13 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   }));
 
+  it('should render toolbar element', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('md-toolbar')).not.toBe(null);
+  }));
+
   it('should render menu element', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
