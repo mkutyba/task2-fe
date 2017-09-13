@@ -1,0 +1,66 @@
+<md-card>
+  <div class="card-header">
+    <a md-icon-button routerLink="/suppliers">
+      <md-icon aria-label="Go back to suppliers list">arrow_back</md-icon>
+    </a>
+    Supplier data
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div *ngIf="loading">
+      <md-spinner class="md-36" aria-label="Loading supplier data"></md-spinner>
+    </div>
+    <md-error *ngIf="error">
+      Failed to load supplier data
+    </md-error>
+    <md-error *ngIf="submitError">
+      Failed to save supplier
+    </md-error>
+    <div *ngIf="!loading && !error">
+      <md-form-field class="w-100">
+        <input
+          mdInput
+          id="name"
+          formControlName="name"
+          required
+          placeholder="Name"
+        >
+        <md-error *ngIf="(name.dirty || name.touched) && name.errors && name.errors.required">
+          Name is required
+        </md-error>
+      </md-form-field>
+      <md-form-field class="w-100">
+        <input
+          mdInput
+          id="number"
+          formControlName="number"
+          required
+          placeholder="Number"
+        >
+        <md-error *ngIf="(number.dirty || number.touched) && number.errors && number.errors.required">
+          Number is required
+        </md-error>
+      </md-form-field>
+      <md-form-field class="w-100">
+        <input
+          mdInput
+          id="logo"
+          formControlName="logo"
+          required
+          placeholder="Logo"
+        >
+        <md-error *ngIf="(logo.dirty || logo.touched) && logo.errors && logo.errors.required">
+          Logo is required
+        </md-error>
+      </md-form-field>
+      <md-error *ngIf="error">
+        Connection error, please try again
+      </md-error>
+      <button md-raised-button color="primary" [disabled]="form.pristine || submitting || form.status !== 'VALID'">
+        <span *ngIf="!model._id">Add</span>
+        <span *ngIf="model._id">Edit</span>
+        <md-spinner *ngIf="submitting" class="md-24" aria-label="Sending"></md-spinner>
+      </button>
+    </div>
+  </form>
+</md-card>

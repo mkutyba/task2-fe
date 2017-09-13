@@ -10,6 +10,7 @@ import {
   MdFormFieldModule,
   MdInputModule,
   MdCardModule,
+  MdProgressSpinnerModule,
 } from '@angular/material';
 
 @NgModule({
@@ -24,6 +25,7 @@ import {
     MdFormFieldModule,
     MdInputModule,
     MdCardModule,
+    MdProgressSpinnerModule,
   ],
   exports: [
     MdButtonModule,
@@ -36,6 +38,7 @@ import {
     MdFormFieldModule,
     MdInputModule,
     MdCardModule,
+    MdProgressSpinnerModule,
   ],
 })
 export class MaterialComponentsModule {}

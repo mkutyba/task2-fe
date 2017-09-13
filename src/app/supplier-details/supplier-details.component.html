@@ -1,0 +1,37 @@
+<a *ngIf="supplier" md-fab color="primary" class="floating" routerLink="/suppliers/edit/{{supplier._id}}">
+  <md-icon class="md-24" aria-label="Edit supplier">edit</md-icon>
+</a>
+
+<md-card>
+  <div class="card-header">
+    <a md-icon-button routerLink="/suppliers">
+      <md-icon aria-label="Go back to suppliers list">arrow_back</md-icon>
+    </a>
+    Supplier info
+  </div>
+
+  <div *ngIf="!loaded && !error">
+    <md-spinner class="md-36" aria-label="Loading supplier info"></md-spinner>
+  </div>
+
+  <div *ngIf="error || (loaded && !supplier)">
+    <button md-icon-button (click)="reload()">
+      <md-icon class="md-24" aria-label="Reload supplier">refresh</md-icon>
+    </button>
+    <md-error md-line>
+      Failed to load supplier info
+    </md-error>
+  </div>
+
+  <md-list *ngIf="supplier">
+    <md-list-item>
+      Name: {{supplier.name}}
+    </md-list-item>
+    <md-list-item>
+      Number: {{supplier.number}}
+    </md-list-item>
+    <md-list-item>
+      Logo: {{supplier.logo}}
+    </md-list-item>
+  </md-list>
+</md-card>

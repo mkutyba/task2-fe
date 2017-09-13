@@ -3,4 +3,8 @@ export class Supplier {
               public name: string,
               public number: string,
               public logo: string) {}
+
+  clone() {
+    return new Supplier(this._id, this.name, this.number, this.logo);
+  }
 }
