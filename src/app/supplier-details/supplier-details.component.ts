@@ -28,6 +28,13 @@ export class SupplierDetailsComponent implements OnInit {
       .subscribe(supplier => {
           this.supplier = supplier;
           this.loaded = true;
+
+          this.supplierService.getItems(supplier._id)
+            .then(items => {
+              this.supplier.items = items;
+              this.loaded = true;
+            })
+            .catch(() => this.error = true);
         },
         () => this.error = true);
   }

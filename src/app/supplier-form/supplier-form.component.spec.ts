@@ -15,7 +15,7 @@ import { mockSuppliers, MockSupplierService } from '../model/mock-supplier.servi
 
 let component: SupplierFormComponent;
 let fixture: ComponentFixture<SupplierFormComponent>;
-const dummyModel = new Supplier('', '', '', '');
+const dummyModel = new Supplier('', '', '', '', []);
 let expectedModel: Supplier;
 let activatedRoute: ActivatedRouteStub;
 

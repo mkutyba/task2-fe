@@ -89,13 +89,14 @@ describe('SupplierDetailsComponent', () => {
 
     it('should display supplier info', () => {
       const compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelectorAll('md-list-item').length).toEqual(3);
+      expect(compiled.querySelectorAll('md-list-item').length).toEqual(4);
       let regex = new RegExp(`Name:\\s+${expectedSupplier.name}`, '');
       expect(compiled.querySelectorAll('md-list-item')[0].innerText).toMatch(regex);
       regex = new RegExp(`Number:\\s+${expectedSupplier.number}`, '');
       expect(compiled.querySelectorAll('md-list-item')[1].innerText).toMatch(regex);
       regex = new RegExp(`Logo:\\s+${expectedSupplier.logo}`, '');
       expect(compiled.querySelectorAll('md-list-item')[2].innerText).toMatch(regex);
+      expect(compiled.querySelectorAll('md-list-item')[3].innerText).toMatch(/No items/);
     });
 
     describe('when failure', () => {

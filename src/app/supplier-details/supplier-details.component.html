@@ -33,5 +33,18 @@
     <md-list-item>
       Logo: {{supplier.logo}}
     </md-list-item>
+
+    <md-divider></md-divider>
+    <h3 md-subheader>Items</h3>
+    <md-list-item *ngIf="!supplier.items || !supplier.items.length">
+      No items
+    </md-list-item>
+    <md-list-item *ngFor="let item of supplier.items">
+      <a md-icon-button routerLink="/items/view/{{item._id}}">
+        <md-icon md-list-icon aria-label="Show item details">info</md-icon>
+      </a>
+      <h4 md-line>{{item.number}}</h4>
+      <p md-line>{{item.stock}} | {{item.online ? 'Online' : 'Offline'}}</p>
+    </md-list-item>
   </md-list>
 </md-card>

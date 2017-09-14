@@ -13,7 +13,7 @@ import { SupplierService } from '../model/supplier.service';
 })
 export class SupplierFormComponent implements OnInit {
   form: FormGroup;
-  model: Supplier = new Supplier('', '', '', '');
+  model: Supplier = new Supplier('', '', '', '', []);
   error: boolean = false;
   submitError: boolean = false;
   loading: boolean = false;

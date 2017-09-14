@@ -4,6 +4,7 @@ import 'rxjs/add/operator/toPromise';
 
 import { Supplier } from './supplier';
 import { environment } from '../../environments/environment';
+import { Item } from './item';
 
 @Injectable()
 export class SupplierService {
@@ -31,6 +32,19 @@ export class SupplierService {
       .get(`${this.suppliersUrl}/${id}`)
       .toPromise()
       .then(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getItems(id: string): Promise<Item[]> {
+    return this.http
+      .get(`${this.suppliersUrl}/${id}/items`)
+      .toPromise()
+      .then(response => {
+        if (response.status < 200 || response.status >= 300) {
+          throw new Error('Bad response status: ' + response.status);
+        }
+        return response.json().data as Item[];
+      })
       .catch(this.handleError);
   }
 
