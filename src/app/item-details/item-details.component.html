@@ -1,0 +1,46 @@
+<a *ngIf="item" md-fab color="primary" class="floating" routerLink="/items/edit/{{item._id}}">
+  <md-icon class="md-24" aria-label="Edit item">edit</md-icon>
+</a>
+
+<md-card>
+  <div class="card-header">
+    <a md-icon-button routerLink="/items">
+      <md-icon aria-label="Go back to items list">arrow_back</md-icon>
+    </a>
+    Item info
+  </div>
+
+  <div *ngIf="!loaded && !error">
+    <md-spinner class="md-36" aria-label="Loading item info"></md-spinner>
+  </div>
+
+  <div *ngIf="error || (loaded && !item)">
+    <button md-icon-button (click)="reload()">
+      <md-icon class="md-24" aria-label="Reload item">refresh</md-icon>
+    </button>
+    <md-error md-line>
+      Failed to load item info
+    </md-error>
+  </div>
+
+  <md-list *ngIf="item">
+    <md-list-item>
+      Number: {{item.number}}
+    </md-list-item>
+    <md-list-item>
+      Stock: {{item.stock}}
+    </md-list-item>
+    <md-list-item>
+      Online: {{item.online ? 'Yes' : 'No'}}
+    </md-list-item>
+    <md-list-item>
+      Image: {{item.image}}
+    </md-list-item>
+    <md-list-item>
+      Description: {{item.description}}
+    </md-list-item>
+    <md-list-item *ngIf="item.supplier">
+      Supplier: {{item.supplier.name}}
+    </md-list-item>
+  </md-list>
+</md-card>

@@ -1,0 +1,108 @@
+<md-card>
+  <div class="card-header">
+    <a md-icon-button routerLink="/items">
+      <md-icon aria-label="Go back to items list">arrow_back</md-icon>
+    </a>
+    Item data
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div *ngIf="loading">
+      <md-spinner class="md-36" aria-label="Loading item data"></md-spinner>
+    </div>
+    <md-error *ngIf="error">
+      Failed to load item data
+    </md-error>
+    <md-error *ngIf="submitError">
+      Failed to save item
+    </md-error>
+    <div *ngIf="!loading && !error">
+      <md-form-field class="w-100">
+        <input
+          mdInput
+          id="number"
+          formControlName="number"
+          required
+          placeholder="Number"
+        >
+        <md-error *ngIf="(number.dirty || number.touched) && number.errors && number.errors.required">
+          Number is required
+        </md-error>
+      </md-form-field>
+
+      <md-form-field class="w-100">
+        <input type="number"
+               mdInput
+               id="stock"
+               formControlName="stock"
+               required
+               placeholder="Stock"
+        >
+        <md-error *ngIf="(stock.dirty || stock.touched) && stock.errors && stock.errors.required">
+          Stock is required
+        </md-error>
+      </md-form-field>
+
+      <md-slide-toggle
+        id="online"
+        formControlName="online"
+      >Online
+      </md-slide-toggle>
+
+      <md-form-field class="w-100">
+        <input
+          mdInput
+          id="image"
+          formControlName="image"
+          required
+          placeholder="Image"
+        >
+        <md-error *ngIf="(image.dirty || image.touched) && image.errors && image.errors.required">
+          Image is required
+        </md-error>
+      </md-form-field>
+
+      <md-form-field class="w-100">
+        <textarea
+          mdInput
+          id="description"
+          formControlName="description"
+          required
+          placeholder="Description"
+        >
+        </textarea>
+        <md-error
+          *ngIf="(description.dirty || description.touched) && description.errors && description.errors.required">
+          Description is required
+        </md-error>
+      </md-form-field>
+
+      <div class="w-100 mat-input-wrapper mat-form-field-wrapper">
+        <md-select
+          class="w-100"
+          id="supplier_id"
+          formControlName="supplier_id"
+          required
+          placeholder="Supplier"
+        >
+          <md-option *ngFor="let supplier of suppliers" [value]="supplier._id">
+            {{supplier.name}}
+          </md-option>
+        </md-select>
+        <md-error class="mat-form-field-subscript-wrapper"
+                  *ngIf="supplierId.touched && supplierId.errors && supplierId.errors.required">
+          Supplier is required
+        </md-error>
+      </div>
+
+      <md-error *ngIf="error">
+        Connection error, please try again
+      </md-error>
+      <button md-raised-button color="primary" [disabled]="form.pristine || submitting || form.status !== 'VALID'">
+        <span *ngIf="!model._id">Add</span>
+        <span *ngIf="model._id">Edit</span>
+        <md-spinner *ngIf="submitting" class="md-24" aria-label="Sending"></md-spinner>
+      </button>
+    </div>
+  </form>
+</md-card>

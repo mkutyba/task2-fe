@@ -1,0 +1,38 @@
+<a md-fab color="primary" class="floating" routerLink="new">
+  <md-icon class="md-24" aria-label="Add new item">add</md-icon>
+</a>
+
+<md-list class="mat-elevation-z3">
+  <md-list-item *ngIf="!loaded && !error">
+    <md-spinner class="md-36" aria-label="Loading items"></md-spinner>
+  </md-list-item>
+  <md-list-item *ngIf="!items.length && loaded">
+    <h4 md-line>No items to display</h4>
+  </md-list-item>
+  <md-list-item *ngIf="error">
+    <button md-icon-button (click)="reload()">
+      <md-icon class="md-24" aria-label="Reload items">refresh</md-icon>
+    </button>
+    <md-error md-line>
+      Failed to load items
+    </md-error>
+  </md-list-item>
+  <md-list-item *ngIf="removeError">
+    <h4 md-line>
+      <md-error>Failed to delete item</md-error>
+    </h4>
+  </md-list-item>
+  <md-list-item *ngFor="let item of items">
+    <a md-icon-button routerLink="view/{{item._id}}">
+      <md-icon md-list-icon aria-label="Show item details">info</md-icon>
+    </a>
+    <a md-icon-button routerLink="edit/{{item._id}}">
+      <md-icon md-list-icon aria-label="Edit item">edit</md-icon>
+    </a>
+    <button md-icon-button (click)="remove(item)">
+      <md-icon md-list-icon aria-label="Delete item">delete</md-icon>
+    </button>
+    <h4 md-line>{{item.number}}</h4>
+    <p md-line>{{item.stock}} | {{item.online ? 'Online' : 'Offline'}}</p>
+  </md-list-item>
+</md-list>
