@@ -76,13 +76,13 @@ describe('ItemsListComponent', () => {
     it('item should have info button with correct url', () => {
       const compiled = fixture.debugElement.nativeElement;
       expect(compiled.querySelectorAll('md-list-item:first-child a').length).toEqual(2);
-      const regex = new RegExp(`.*/view/${mockItems[0]._id}`, '');
+      const regex = new RegExp(`.*/view/${mockItems[0].id}`, '');
       expect(compiled.querySelectorAll('md-list-item:first-child a')[0].href).toMatch(regex);
     });
 
     it('item should have edit button with correct url', () => {
       const compiled = fixture.debugElement.nativeElement;
-      const regex = new RegExp(`.*/edit/${mockItems[0]._id}`, '');
+      const regex = new RegExp(`.*/edit/${mockItems[0].id}`, '');
       expect(compiled.querySelectorAll('md-list-item:first-child a')[1].href).toMatch(regex);
     });
 

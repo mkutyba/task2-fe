@@ -44,14 +44,14 @@ export class ItemService {
 
   update(item: Item): Promise<Item> {
     return this.http
-      .put(`${this.itemsUrl}/${item._id}`, JSON.stringify(item), {headers: this.headers})
+      .put(`${this.itemsUrl}/${item.id}`, JSON.stringify(item), {headers: this.headers})
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
   }
 
   createOrUpdate(item: Item): Promise<Item> {
-    if (item._id) {
+    if (item.id) {
       return this.update(item);
     } else {
       return this.create(item);
@@ -60,7 +60,7 @@ export class ItemService {
 
   remove(item: Item): Promise<boolean> {
     return this.http
-      .delete(`${this.itemsUrl}/${item._id}`, {headers: this.headers})
+      .delete(`${this.itemsUrl}/${item.id}`, {headers: this.headers})
       .toPromise()
       .then(response => {
         if (response.status < 200 || response.status >= 300) {

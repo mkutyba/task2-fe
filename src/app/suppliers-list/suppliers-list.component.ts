@@ -30,7 +30,7 @@ export class SuppliersListComponent implements OnInit {
     this.removeError = false;
     this.supplierService
       .remove(supplier)
-      .then(() => this.suppliers = this.suppliers.filter(s => s._id !== supplier._id))
+      .then(() => this.suppliers = this.suppliers.filter(s => s.id !== supplier.id))
       .catch(() => this.removeError = true);
   }
 

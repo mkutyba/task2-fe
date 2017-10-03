@@ -69,7 +69,7 @@ describe('ItemDetailsComponent', () => {
 
     beforeEach(async(() => {
       expectedItem = mockItems[0];
-      activatedRoute.testParamMap = {id: expectedItem._id};
+      activatedRoute.testParamMap = {id: expectedItem.id};
 
       // 1st change detection triggers ngOnInit which gets a item
       fixture.detectChanges();
@@ -84,14 +84,14 @@ describe('ItemDetailsComponent', () => {
 
     it('should have item', () => {
       expect(component.item).toEqual(any(Item));
-      expect(component.item._id).toEqual(expectedItem._id);
+      expect(component.item.id).toEqual(expectedItem.id);
       expect(component.item.number).toEqual(expectedItem.number);
       expect(component.item.stock).toEqual(expectedItem.stock);
       expect(component.item.online).toEqual(expectedItem.online);
       expect(component.item.image).toEqual(expectedItem.image);
       expect(component.item.description).toEqual(expectedItem.description);
       expect(component.item.supplier_id).toEqual(expectedItem.supplier_id);
-      expect(component.item.supplier._id).toEqual(expectedItem.supplier._id);
+      expect(component.item.supplier.id).toEqual(expectedItem.supplier.id);
     });
 
     it('should display item info', () => {

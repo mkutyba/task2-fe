@@ -57,7 +57,7 @@ describe('ItemFormComponent', () => {
 
   it('should have dummy model before ngOnInit', () => {
     expect(component.model).toEqual(any(Item));
-    expect(component.model._id).toEqual(expectedModel._id);
+    expect(component.model.id).toEqual(expectedModel.id);
     expect(component.model.number).toEqual(expectedModel.number);
     expect(component.model.stock).toEqual(expectedModel.stock);
     expect(component.model.online).toEqual(expectedModel.online);
@@ -69,7 +69,7 @@ describe('ItemFormComponent', () => {
   it('should have dummy model immediately after ngOnInit', () => {
     fixture.detectChanges();
     expect(component.model).toEqual(any(Item));
-    expect(component.model._id).toEqual(expectedModel._id);
+    expect(component.model.id).toEqual(expectedModel.id);
     expect(component.model.number).toEqual(expectedModel.number);
     expect(component.model.stock).toEqual(expectedModel.stock);
     expect(component.model.online).toEqual(expectedModel.online);
@@ -87,7 +87,7 @@ describe('ItemFormComponent', () => {
   describe('after init edit item form', () => {
     beforeEach(async(() => {
       expectedModel = mockItems[0];
-      activatedRoute.testParamMap = {id: expectedModel._id};
+      activatedRoute.testParamMap = {id: expectedModel.id};
 
       fixture.detectChanges();
       fixture.whenStable()
@@ -101,7 +101,7 @@ describe('ItemFormComponent', () => {
 
     it('should have model', () => {
       expect(component.model).toEqual(any(Item));
-      expect(component.model._id).toEqual(expectedModel._id);
+      expect(component.model.id).toEqual(expectedModel.id);
       expect(component.model.number).toEqual(expectedModel.number);
       expect(component.model.stock).toEqual(expectedModel.stock);
       expect(component.model.online).toEqual(expectedModel.online);

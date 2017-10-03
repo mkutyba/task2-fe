@@ -19,7 +19,7 @@ export class MockItemService extends ItemService {
   }
 
   get(id: string): Promise<Item> {
-    let item = mockItems.find(i => i._id === id);
+    let item = mockItems.find(i => i.id === id);
     return this.lastPromise = Promise.resolve<Item>(item);
   }
 

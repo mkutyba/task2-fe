@@ -150,11 +150,11 @@ describe('SupplierService', () => {
       });
 
       let newSupplier = mockSuppliers[0].clone();
-      newSupplier._id = '';
+      newSupplier.id = '';
       service.create(newSupplier)
         .then(supplier => {
           expect(supplier).toBeTruthy();
-          expect(supplier._id).not.toEqual(newSupplier._id, 'should generate new _id on insert');
+          expect(supplier.id).not.toEqual(newSupplier.id, 'should generate new id on insert');
           expect(supplier.name).toEqual(newSupplier.name);
           expect(supplier.number).toEqual(newSupplier.number);
           expect(supplier.logo).toEqual(newSupplier.logo);
@@ -191,7 +191,7 @@ describe('SupplierService', () => {
     it('should respond with entity data on success', async(inject([], () => {
       backend.connections.subscribe((c: MockConnection) => {
         const apiUrl = environment.apiUrl;
-        expect(c.request.url).toBe(`${apiUrl}/suppliers/${mockSuppliers[0]._id}`);
+        expect(c.request.url).toBe(`${apiUrl}/suppliers/${mockSuppliers[0].id}`);
         expect(c.request.method).toBe(RequestMethod.Put);
 
         c.mockRespond(response);
@@ -200,7 +200,7 @@ describe('SupplierService', () => {
       service.update(mockSuppliers[0])
         .then(supplier => {
           expect(supplier).toBeTruthy();
-          expect(supplier._id).toEqual(mockSuppliers[0]._id);
+          expect(supplier.id).toEqual(mockSuppliers[0].id);
           expect(supplier.name).toEqual(mockSuppliers[0].name);
           expect(supplier.number).toEqual(mockSuppliers[0].number);
           expect(supplier.logo).toEqual(mockSuppliers[0].logo);
@@ -244,14 +244,14 @@ describe('SupplierService', () => {
       });
 
       let newSupplier = mockSuppliers[0].clone();
-      newSupplier._id = '';
+      newSupplier.id = '';
       service.createOrUpdate(newSupplier);
     })));
 
     it('should be updated', async(inject([], () => {
       backend.connections.subscribe((c: MockConnection) => {
         const apiUrl = environment.apiUrl;
-        expect(c.request.url).toBe(`${apiUrl}/suppliers/${mockSuppliers[0]._id}`);
+        expect(c.request.url).toBe(`${apiUrl}/suppliers/${mockSuppliers[0].id}`);
         expect(c.request.method).toBe(RequestMethod.Put);
 
         c.mockRespond(response);
@@ -276,7 +276,7 @@ describe('SupplierService', () => {
     it('should respond with entity data on success', async(inject([], () => {
       backend.connections.subscribe((c: MockConnection) => {
         const apiUrl = environment.apiUrl;
-        expect(c.request.url).toBe(`${apiUrl}/suppliers/${mockSuppliers[0]._id}`);
+        expect(c.request.url).toBe(`${apiUrl}/suppliers/${mockSuppliers[0].id}`);
         expect(c.request.method).toBe(RequestMethod.Delete);
 
         c.mockRespond(response);

@@ -1,7 +1,7 @@
 import { Supplier } from './supplier';
 
 export class Item {
-  constructor(public _id: string = '0',
+  constructor(public id: string = '0',
               public number: string,
               public stock: number,
               public online: boolean,
@@ -11,6 +11,6 @@ export class Item {
               public supplier: Supplier = new Supplier('', '', '', '', [])) {}
 
   clone() {
-    return new Item(this._id, this.number, this.stock, this.online, this.image, this.description, this.supplier_id, this.supplier);
+    return new Item(this.id, this.number, this.stock, this.online, this.image, this.description, this.supplier_id, this.supplier);
   }
 }

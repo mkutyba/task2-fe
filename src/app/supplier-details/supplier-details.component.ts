@@ -29,7 +29,7 @@ export class SupplierDetailsComponent implements OnInit {
           this.supplier = supplier;
           this.loaded = true;
 
-          this.supplierService.getItems(supplier._id)
+          this.supplierService.getItems(supplier.id)
             .then(items => {
               this.supplier.items = items;
               this.loaded = true;

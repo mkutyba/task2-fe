@@ -18,7 +18,7 @@ export class MockSupplierService extends SupplierService {
   }
 
   get(id: string): Promise<Supplier> {
-    let supplier = mockSuppliers.find(s => s._id === id);
+    let supplier = mockSuppliers.find(s => s.id === id);
     return this.lastPromise = Promise.resolve<Supplier>(supplier);
   }
 

@@ -54,7 +54,7 @@ describe('SupplierFormComponent', () => {
 
   it('should have dummy model before ngOnInit', () => {
     expect(component.model).toEqual(any(Supplier));
-    expect(component.model._id).toEqual(expectedModel._id);
+    expect(component.model.id).toEqual(expectedModel.id);
     expect(component.model.name).toEqual(expectedModel.name);
     expect(component.model.number).toEqual(expectedModel.number);
     expect(component.model.logo).toEqual(expectedModel.logo);
@@ -63,7 +63,7 @@ describe('SupplierFormComponent', () => {
   it('should have dummy model immediately after ngOnInit', () => {
     fixture.detectChanges();
     expect(component.model).toEqual(any(Supplier));
-    expect(component.model._id).toEqual(expectedModel._id);
+    expect(component.model.id).toEqual(expectedModel.id);
     expect(component.model.name).toEqual(expectedModel.name);
     expect(component.model.number).toEqual(expectedModel.number);
     expect(component.model.logo).toEqual(expectedModel.logo);
@@ -78,7 +78,7 @@ describe('SupplierFormComponent', () => {
   describe('after init edit supplier form', () => {
     beforeEach(async(() => {
       expectedModel = mockSuppliers[0];
-      activatedRoute.testParamMap = {id: expectedModel._id};
+      activatedRoute.testParamMap = {id: expectedModel.id};
 
       fixture.detectChanges();
       fixture.whenStable()
@@ -92,7 +92,7 @@ describe('SupplierFormComponent', () => {
 
     it('should have model', () => {
       expect(component.model).toEqual(any(Supplier));
-      expect(component.model._id).toEqual(expectedModel._id);
+      expect(component.model.id).toEqual(expectedModel.id);
       expect(component.model.name).toEqual(expectedModel.name);
       expect(component.model.number).toEqual(expectedModel.number);
       expect(component.model.logo).toEqual(expectedModel.logo);

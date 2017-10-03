@@ -58,14 +58,14 @@ export class SupplierService {
 
   update(supplier: Supplier): Promise<Supplier> {
     return this.http
-      .put(`${this.suppliersUrl}/${supplier._id}`, JSON.stringify(supplier), {headers: this.headers})
+      .put(`${this.suppliersUrl}/${supplier.id}`, JSON.stringify(supplier), {headers: this.headers})
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
   }
 
   createOrUpdate(supplier: Supplier): Promise<Supplier> {
-    if (supplier._id) {
+    if (supplier.id) {
       return this.update(supplier);
     } else {
       return this.create(supplier);
@@ -74,7 +74,7 @@ export class SupplierService {
 
   remove(supplier: Supplier): Promise<boolean> {
     return this.http
-      .delete(`${this.suppliersUrl}/${supplier._id}`, {headers: this.headers})
+      .delete(`${this.suppliersUrl}/${supplier.id}`, {headers: this.headers})
       .toPromise()
       .then(response => {
         if (response.status < 200 || response.status >= 300) {

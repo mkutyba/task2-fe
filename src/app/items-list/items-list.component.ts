@@ -30,7 +30,7 @@ export class ItemsListComponent implements OnInit {
     this.removeError = false;
     this.itemService
       .remove(item)
-      .then(() => this.items = this.items.filter(i => i._id !== item._id))
+      .then(() => this.items = this.items.filter(i => i.id !== item.id))
       .catch(() => this.removeError = true);
   }
 

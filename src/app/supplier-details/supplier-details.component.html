@@ -1,4 +1,4 @@
-<a *ngIf="supplier" md-fab color="primary" class="floating" routerLink="/suppliers/edit/{{supplier._id}}">
+<a *ngIf="supplier" md-fab color="primary" class="floating" routerLink="/suppliers/edit/{{supplier.id}}">
   <md-icon class="md-24" aria-label="Edit supplier">edit</md-icon>
 </a>
 
@@ -40,7 +40,7 @@
       No items
     </md-list-item>
     <md-list-item *ngFor="let item of supplier.items">
-      <a md-icon-button routerLink="/items/view/{{item._id}}">
+      <a md-icon-button routerLink="/items/view/{{item.id}}">
         <md-icon md-list-icon aria-label="Show item details">info</md-icon>
       </a>
       <h4 md-line>{{item.number}}</h4>

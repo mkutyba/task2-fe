@@ -66,7 +66,7 @@ describe('SupplierDetailsComponent', () => {
 
     beforeEach(async(() => {
       expectedSupplier = mockSuppliers[0];
-      activatedRoute.testParamMap = {id: expectedSupplier._id};
+      activatedRoute.testParamMap = {id: expectedSupplier.id};
 
       // 1st change detection triggers ngOnInit which gets a supplier
       fixture.detectChanges();
@@ -81,7 +81,7 @@ describe('SupplierDetailsComponent', () => {
 
     it('should have supplier', () => {
       expect(component.supplier).toEqual(any(Supplier));
-      expect(component.supplier._id).toEqual(expectedSupplier._id);
+      expect(component.supplier.id).toEqual(expectedSupplier.id);
       expect(component.supplier.name).toEqual(expectedSupplier.name);
       expect(component.supplier.number).toEqual(expectedSupplier.number);
       expect(component.supplier.logo).toEqual(expectedSupplier.logo);

@@ -85,7 +85,7 @@
           required
           placeholder="Supplier"
         >
-          <md-option *ngFor="let supplier of suppliers" [value]="supplier._id">
+          <md-option *ngFor="let supplier of suppliers" [value]="supplier.id">
             {{supplier.name}}
           </md-option>
         </md-select>
@@ -99,8 +99,8 @@
         Connection error, please try again
       </md-error>
       <button md-raised-button color="primary" [disabled]="form.pristine || submitting || form.status !== 'VALID'">
-        <span *ngIf="!model._id">Add</span>
-        <span *ngIf="model._id">Edit</span>
+        <span *ngIf="!model.id">Add</span>
+        <span *ngIf="model.id">Edit</span>
         <md-spinner *ngIf="submitting" class="md-24" aria-label="Sending"></md-spinner>
       </button>
     </div>

@@ -23,10 +23,10 @@
     </h4>
   </md-list-item>
   <md-list-item *ngFor="let supplier of suppliers">
-    <a md-icon-button routerLink="view/{{supplier._id}}">
+    <a md-icon-button routerLink="view/{{supplier.id}}">
       <md-icon md-list-icon aria-label="Show supplier details">info</md-icon>
     </a>
-    <a md-icon-button routerLink="edit/{{supplier._id}}">
+    <a md-icon-button routerLink="edit/{{supplier.id}}">
       <md-icon md-list-icon aria-label="Edit supplier">edit</md-icon>
     </a>
     <button md-icon-button (click)="remove(supplier)">
